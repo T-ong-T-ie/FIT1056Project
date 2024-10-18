@@ -1,4 +1,4 @@
-from login import LoginApp
+from interface.login import LoginApp
 
 def main():
     """

@@ -14,4 +14,8 @@ def show_main_menu():
     button_tutorial = tk.Button(root, text="Interactive Tutorials")
     button_tutorial.pack(pady=10)
 
+    # Create and place shut down button
+    button_shutdown = tk.Button(root, text="Shut Down", command=root.quit)
+    button_shutdown.pack(pady=10)
+
     root.mainloop()

@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from menu import show_main_menu
+from interface.menu import show_main_menu
 
 class LoginApp(tk.Tk):
     def __init__(self):
