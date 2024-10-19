@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import subprocess
 from interface.Intermediate_tutorials import IntermediateTutorials
+from interface.quiz.main_window import EMPOWERU
 
 class InteractiveTutorialsApp(tk.Tk):
     def __init__(self):
@@ -26,6 +27,10 @@ class InteractiveTutorialsApp(tk.Tk):
         button_advanced.pack(pady=5)
         label_advanced = tk.Label(self, text="Advanced module: for experienced users, teaching complex concepts and practical applications.")
         label_advanced.pack(pady=5)
+
+        # Create and place Quiz button
+        button_quiz = tk.Button(self, text="Quiz", command=self.open_quiz)
+        button_quiz.pack(pady=10)
 
         # Create and place back button
         button_back = tk.Button(self, text="Back to Main Menu", command=self.back_to_main_menu)
@@ -82,6 +87,11 @@ class InteractiveTutorialsApp(tk.Tk):
             self.text_output.config(state=tk.DISABLED)
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
+    def open_quiz(self):
+        self.destroy()
+        quiz_app = EMPOWERU(title="EMPOWERU Quiz", width=800, height=600)
+        quiz_app.mainloop()
 
     def back_to_main_menu(self):
         self.destroy()
