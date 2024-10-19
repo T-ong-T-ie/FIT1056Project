@@ -11,6 +11,31 @@ class InteractiveTutorialsApp(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
+        # Create and place module buttons and descriptions
+        button_beginner = tk.Button(self, text="Beginner Module", command=self.show_tutorial)
+        button_beginner.pack(pady=5)
+        label_beginner = tk.Label(self, text="Beginner module: suitable for beginners, providing basic knowledge.")
+        label_beginner.pack(pady=5)
+
+        button_intermediate = tk.Button(self, text="Intermediate Module", command=self.show_tutorial)
+        button_intermediate.pack(pady=5)
+        label_intermediate = tk.Label(self, text="Intermediate module: for learners with some basics, teaching advanced skills.")
+        label_intermediate.pack(pady=5)
+
+        button_advanced = tk.Button(self, text="Advanced Module", command=self.show_tutorial)
+        button_advanced.pack(pady=5)
+        label_advanced = tk.Label(self, text="Advanced module: for experienced users, teaching complex concepts and practical applications.")
+        label_advanced.pack(pady=5)
+
+        # Create and place back button
+        button_back = tk.Button(self, text="Back to Main Menu", command=self.back_to_main_menu)
+        button_back.pack(pady=10)
+
+    def show_tutorial(self):
+        # Clear the window
+        for widget in self.winfo_children():
+            widget.destroy()
+
         # Create and place code input text area
         label_code_input = tk.Label(self, text="Enter your Python code:")
         label_code_input.pack(pady=5)

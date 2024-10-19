@@ -1,8 +1,6 @@
 # interface/login.py
 import tkinter as tk
 from tkinter import messagebox
-from interface.menu import show_main_menu
-from interface.register import RegisterApp
 
 class LoginApp(tk.Tk):
     def __init__(self):
@@ -38,6 +36,7 @@ class LoginApp(tk.Tk):
 
     def open_register(self):
         self.destroy()
+        from interface.register import RegisterApp
         register_app = RegisterApp()
         register_app.mainloop()
 
@@ -64,6 +63,7 @@ class LoginApp(tk.Tk):
             if user['username'] == username and user['password'] == password:
                 messagebox.showinfo("Login", "Login successful!")
                 self.destroy()
+                from interface.menu import show_main_menu
                 show_main_menu()
                 return
         messagebox.showerror("Login", "Invalid username or password")

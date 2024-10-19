@@ -1,6 +1,5 @@
 # interface/menu.py
 import tkinter as tk
-from interface.interactive_tutorials import InteractiveTutorialsApp
 
 def show_main_menu():
     root = tk.Tk()
@@ -17,6 +16,10 @@ def show_main_menu():
     button_tutorial = tk.Button(root, text="Interactive Tutorials", command=lambda: open_interactive_tutorials(root))
     button_tutorial.pack(pady=10)
 
+    # Create and place logout button
+    button_logout = tk.Button(root, text="Logout", command=lambda: logout(root))
+    button_logout.pack(pady=10)
+
     # Create and place shut down button
     button_shutdown = tk.Button(root, text="Shut Down", command=root.quit)
     button_shutdown.pack(pady=10)
@@ -25,5 +28,12 @@ def show_main_menu():
 
 def open_interactive_tutorials(root):
     root.destroy()
+    from interface.interactive_tutorials import InteractiveTutorialsApp
     tutorials_app = InteractiveTutorialsApp()
     tutorials_app.mainloop()
+
+def logout(root):
+    root.destroy()
+    from interface.login import LoginApp
+    login_app = LoginApp()
+    login_app.mainloop()
