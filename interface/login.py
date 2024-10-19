@@ -1,4 +1,3 @@
-# interface/login.py
 import tkinter as tk
 from tkinter import messagebox
 
@@ -10,6 +9,10 @@ class LoginApp(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
+        # Clear the window
+        for widget in self.winfo_children():
+            widget.destroy()
+
         # Create and place username label and entry
         label_username = tk.Label(self, text="Username")
         label_username.pack(pady=5)
@@ -33,6 +36,10 @@ class LoginApp(tk.Tk):
         # Create and place shut down button
         button_shutdown = tk.Button(self, text="Shut Down", command=self.quit)
         button_shutdown.pack(pady=10)
+
+        # Create and place message label for login failure
+        self.label_message = tk.Label(self, text="")
+        self.label_message.pack(pady=5)
 
     def open_register(self):
         self.destroy()
@@ -61,9 +68,14 @@ class LoginApp(tk.Tk):
         # Validate username and password
         for user in user_data:
             if user['username'] == username and user['password'] == password:
-                messagebox.showinfo("Login", "Login successful!")
-                self.destroy()
+                self.clear_window()
                 from interface.menu import show_main_menu
-                show_main_menu()
+                show_main_menu(self)
                 return
-        messagebox.showerror("Login", "Invalid username or password")
+
+        # Display failure message
+        self.label_message.config(text="Invalid username or password", fg="red")
+
+    def clear_window(self):
+        for widget in self.winfo_children():
+            widget.destroy()

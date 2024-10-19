@@ -1,7 +1,7 @@
-# interface/interactive_tutorials.py
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+from interface.Intermediate_tutorials import IntermediateTutorials
 
 class InteractiveTutorialsApp(tk.Tk):
     def __init__(self):
@@ -17,7 +17,7 @@ class InteractiveTutorialsApp(tk.Tk):
         label_beginner = tk.Label(self, text="Beginner module: suitable for beginners, providing basic knowledge.")
         label_beginner.pack(pady=5)
 
-        button_intermediate = tk.Button(self, text="Intermediate Module", command=self.show_tutorial)
+        button_intermediate = tk.Button(self, text="Intermediate Module", command=self.show_intermediate_tutorial)
         button_intermediate.pack(pady=5)
         label_intermediate = tk.Label(self, text="Intermediate module: for learners with some basics, teaching advanced skills.")
         label_intermediate.pack(pady=5)
@@ -55,6 +55,14 @@ class InteractiveTutorialsApp(tk.Tk):
         # Create and place back button
         button_back = tk.Button(self, text="Back to Main Menu", command=self.back_to_main_menu)
         button_back.pack(pady=10)
+
+    def show_intermediate_tutorial(self):
+        # Clear the window
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        # Initialize and display the intermediate tutorials
+        IntermediateTutorials(self)
 
     def run_code(self):
         code = self.text_code_input.get("1.0", tk.END)

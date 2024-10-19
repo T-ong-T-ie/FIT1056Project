@@ -1,8 +1,8 @@
 # interface/menu.py
 import tkinter as tk
 
-def show_main_menu():
-    root = tk.Tk()
+def show_main_menu(root):
+    root.clear_window()
     root.title("Empower U - Main Menu")
     root.geometry("800x600")  # Sets the initial window size
 
@@ -19,12 +19,6 @@ def show_main_menu():
     # Create and place logout button
     button_logout = tk.Button(root, text="Logout", command=lambda: logout(root))
     button_logout.pack(pady=10)
-
-    # Create and place shut down button
-    button_shutdown = tk.Button(root, text="Shut Down", command=root.quit)
-    button_shutdown.pack(pady=10)
-
-    root.mainloop()
 
 def open_interactive_tutorials(root):
     root.destroy()
