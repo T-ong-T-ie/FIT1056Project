@@ -94,6 +94,10 @@ class InteractiveTutorialsApp(tk.Tk):
         quiz_app.mainloop()
 
     def back_to_main_menu(self):
-        self.destroy()
+        self.clear_window()
         from interface.menu import show_main_menu
-        show_main_menu()
+        show_main_menu(self)
+
+    def clear_window(self):
+        for widget in self.winfo_children():
+            widget.destroy()
