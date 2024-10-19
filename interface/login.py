@@ -8,7 +8,7 @@ class LoginApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Empower U - Login")
-        self.geometry("800x600")  # 设置窗口初始大小
+        self.geometry("800x600")  # Sets the initial window size
         self.create_widgets()
 
     def create_widgets(self):

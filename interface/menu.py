@@ -5,7 +5,7 @@ from interface.interactive_tutorials import InteractiveTutorialsApp
 def show_main_menu():
     root = tk.Tk()
     root.title("Empower U - Main Menu")
-    root.geometry("800x600")  # 设置窗口初始大小
+    root.geometry("800x600")  # Sets the initial window size
 
     # Create and place buttons for main menu
     button_auth = tk.Button(root, text="User Authentication")
