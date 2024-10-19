@@ -1,2 +1,3 @@
 admin,password,admin@example.com,Admin User
-123,123,0,0
+tongtie,123456,tongtie.hu@monash.edu,Tong Tie
+123,123,12345@monash.edu,123 123

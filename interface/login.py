@@ -1,11 +1,14 @@
+# interface/login.py
 import tkinter as tk
 from tkinter import messagebox
 from interface.menu import show_main_menu
+from interface.register import RegisterApp
 
 class LoginApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Empower U - Login")
+        self.geometry("400x300")  # 设置窗口初始大小
         self.create_widgets()
 
     def create_widgets(self):
@@ -25,9 +28,18 @@ class LoginApp(tk.Tk):
         button_login = tk.Button(self, text="Login", command=self.login)
         button_login.pack(pady=10)
 
+        # Create and place register button
+        button_register = tk.Button(self, text="Register", command=self.open_register)
+        button_register.pack(pady=10)
+
         # Create and place shut down button
         button_shutdown = tk.Button(self, text="Shut Down", command=self.quit)
         button_shutdown.pack(pady=10)
+
+    def open_register(self):
+        self.destroy()
+        register_app = RegisterApp()
+        register_app.mainloop()
 
     def load_user_data(self):
         users = []

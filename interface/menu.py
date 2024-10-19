@@ -3,6 +3,7 @@ import tkinter as tk
 def show_main_menu():
     root = tk.Tk()
     root.title("Empower U - Main Menu")
+    root.geometry("400x300")  # 设置窗口初始大小
 
     # Create and place buttons for main menu
     button_auth = tk.Button(root, text="User Authentication")
