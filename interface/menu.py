@@ -1,9 +1,11 @@
+# interface/menu.py
 import tkinter as tk
+from interface.interactive_tutorials import InteractiveTutorialsApp
 
 def show_main_menu():
     root = tk.Tk()
     root.title("Empower U - Main Menu")
-    root.geometry("400x300")  # 设置窗口初始大小
+    root.geometry("800x600")  # 设置窗口初始大小
 
     # Create and place buttons for main menu
     button_auth = tk.Button(root, text="User Authentication")
@@ -12,7 +14,7 @@ def show_main_menu():
     button_progress = tk.Button(root, text="Progress Tracking")
     button_progress.pack(pady=10)
 
-    button_tutorial = tk.Button(root, text="Interactive Tutorials")
+    button_tutorial = tk.Button(root, text="Interactive Tutorials", command=lambda: open_interactive_tutorials(root))
     button_tutorial.pack(pady=10)
 
     # Create and place shut down button
@@ -20,3 +22,8 @@ def show_main_menu():
     button_shutdown.pack(pady=10)
 
     root.mainloop()
+
+def open_interactive_tutorials(root):
+    root.destroy()
+    tutorials_app = InteractiveTutorialsApp()
+    tutorials_app.mainloop()
