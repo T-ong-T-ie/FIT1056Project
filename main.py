@@ -12,7 +12,7 @@ def main():
     """
     root = LoginApp()
     root.mainloop()
-    print("EMPOWERU System shut down completed.")
+    print("EMPOWER U System shut down completed.")
 
 if __name__ == "__main__":
     main()

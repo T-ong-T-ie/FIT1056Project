@@ -1,0 +1,7 @@
+Variables: Completed
+Loops: Completed
+Functions: Completed
+File Handling: Not Completed
+OOP: Not Completed
+Exception Handling: Not Completed
+Modules: Not Completed

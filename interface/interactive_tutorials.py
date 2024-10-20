@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import os
 from interface.Intermediate_tutorials import IntermediateTutorials
 from interface.Advanced_tutorials import AdvancedTutorials
 from interface.quiz.main_window import EMPOWERU
@@ -10,6 +11,9 @@ class InteractiveTutorialsApp(tk.Tk):
         super().__init__()
         self.title("Empower U - Interactive Tutorials")
         self.geometry("800x600")  # Sets the initial window size
+        self.progress_file = os.path.join("progress", "user_progress.txt")
+        self.modules = {"Beginner": False, "Intermediate": False, "Advanced": False, "Quiz": False}
+        self.load_progress()
         self.create_widgets()
 
     def create_widgets(self):
@@ -38,6 +42,7 @@ class InteractiveTutorialsApp(tk.Tk):
         button_back.pack(pady=10)
 
     def show_tutorial(self):
+        self.mark_module_completed("Beginner")
         # Clear the window
         for widget in self.winfo_children():
             widget.destroy()
@@ -67,6 +72,7 @@ class InteractiveTutorialsApp(tk.Tk):
         button_back.pack(pady=10)
 
     def show_intermediate_tutorial(self):
+        self.mark_module_completed("Intermediate")
         # Clear the window
         for widget in self.winfo_children():
             widget.destroy()
@@ -75,6 +81,7 @@ class InteractiveTutorialsApp(tk.Tk):
         IntermediateTutorials(self)
 
     def show_advanced_tutorial(self):
+        self.mark_module_completed("Advanced")
         # Clear the window
         for widget in self.winfo_children():
             widget.destroy()
@@ -102,6 +109,7 @@ class InteractiveTutorialsApp(tk.Tk):
             messagebox.showerror("Error", str(e))
 
     def open_quiz(self):
+        self.mark_module_completed("Quiz")
         self.destroy()
         quiz_app = EMPOWERU(title="EMPOWERU Quiz", width=800, height=600)
         quiz_app.mainloop()
@@ -118,3 +126,21 @@ class InteractiveTutorialsApp(tk.Tk):
     def clear_window(self):
         for widget in self.winfo_children():
             widget.destroy()
+
+    def mark_module_completed(self, module):
+        self.modules[module] = True
+        self.save_progress()
+
+    def save_progress(self):
+        os.makedirs("progress", exist_ok=True)
+        with open(self.progress_file, 'w') as file:
+            for module, completed in self.modules.items():
+                status = "Completed" if completed else "Not Completed"
+                file.write(f"{module}: {status}\n")
+
+    def load_progress(self):
+        if os.path.exists(self.progress_file):
+            with open(self.progress_file, 'r') as file:
+                for line in file:
+                    module, status = line.strip().split(": ")
+                    self.modules[module] = True if status == "Completed" else False

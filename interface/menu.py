@@ -1,4 +1,3 @@
-# interface/menu.py
 import tkinter as tk
 
 def show_main_menu(root):
@@ -10,7 +9,7 @@ def show_main_menu(root):
     button_auth = tk.Button(root, text="User Authentication")
     button_auth.pack(pady=10)
 
-    button_progress = tk.Button(root, text="Progress Tracking")
+    button_progress = tk.Button(root, text="Progress Tracking", command=lambda: open_progress_tracking(root))
     button_progress.pack(pady=10)
 
     button_tutorial = tk.Button(root, text="Interactive Tutorials", command=lambda: open_interactive_tutorials(root))
@@ -19,6 +18,13 @@ def show_main_menu(root):
     # Create and place logout button
     button_logout = tk.Button(root, text="Logout", command=lambda: logout(root))
     button_logout.pack(pady=10)
+
+def open_progress_tracking(root):
+    root.destroy()
+    from interface.progress.progress_save import LearningProgressTracker
+    progress_app = tk.Tk()
+    LearningProgressTracker(progress_app)
+    progress_app.mainloop()
 
 def open_interactive_tutorials(root):
     root.destroy()
