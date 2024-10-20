@@ -23,7 +23,7 @@ class IntermediateTutorials:
         button_function.pack(pady=10)
 
         # Create and place back button
-        button_back = tk.Button(self.master, text="Back to Main Menu", command=self.back_to_main_menu)
+        button_back = tk.Button(self.master, text="Back to Learning Module Menu", command=self.back_to_learning_module_menu)
         button_back.pack(pady=10)
 
     def show_variables_tutorial(self):
@@ -107,10 +107,9 @@ class IntermediateTutorials:
         age = self.entry_age.get()
         messagebox.showinfo("Information", f"Your name is {name} and you are {age} years old")
 
-    def back_to_main_menu(self):
-        self.master.destroy()
-        from interface.menu import show_main_menu
-        show_main_menu()
+    def back_to_learning_module_menu(self):
+        self.master.clear_window()
+        self.master.create_widgets()
 
     def clear_window(self):
         for widget in self.master.winfo_children():

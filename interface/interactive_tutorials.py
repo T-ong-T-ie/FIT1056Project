@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import subprocess
 from interface.Intermediate_tutorials import IntermediateTutorials
+from interface.Advanced_tutorials import AdvancedTutorials
 from interface.quiz.main_window import EMPOWERU
 
 class InteractiveTutorialsApp(tk.Tk):
@@ -23,7 +24,7 @@ class InteractiveTutorialsApp(tk.Tk):
         label_intermediate = tk.Label(self, text="Intermediate module: for learners with some basics, teaching advanced skills.")
         label_intermediate.pack(pady=5)
 
-        button_advanced = tk.Button(self, text="Advanced Module", command=self.show_tutorial)
+        button_advanced = tk.Button(self, text="Advanced Module", command=self.show_advanced_tutorial)
         button_advanced.pack(pady=5)
         label_advanced = tk.Label(self, text="Advanced module: for experienced users, teaching complex concepts and practical applications.")
         label_advanced.pack(pady=5)
@@ -40,6 +41,10 @@ class InteractiveTutorialsApp(tk.Tk):
         # Clear the window
         for widget in self.winfo_children():
             widget.destroy()
+
+        # Add a brief introduction to Python
+        label_intro = tk.Label(self, text="Welcome to the Beginner Module!\nPython is a versatile programming language used for various applications.\nLet's start with a simple program to print 'hello world'.")
+        label_intro.pack(pady=10)
 
         # Create and place code input text area
         label_code_input = tk.Label(self, text="Enter your Python code:")
@@ -58,7 +63,7 @@ class InteractiveTutorialsApp(tk.Tk):
         self.text_output.pack(pady=5)
 
         # Create and place back button
-        button_back = tk.Button(self, text="Back to Main Menu", command=self.back_to_main_menu)
+        button_back = tk.Button(self, text="Back to Learning Module Menu", command=self.back_to_learning_module_menu)
         button_back.pack(pady=10)
 
     def show_intermediate_tutorial(self):
@@ -68,6 +73,14 @@ class InteractiveTutorialsApp(tk.Tk):
 
         # Initialize and display the intermediate tutorials
         IntermediateTutorials(self)
+
+    def show_advanced_tutorial(self):
+        # Clear the window
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        # Initialize and display the advanced tutorials
+        AdvancedTutorials(self)
 
     def run_code(self):
         code = self.text_code_input.get("1.0", tk.END)
@@ -97,6 +110,10 @@ class InteractiveTutorialsApp(tk.Tk):
         self.clear_window()
         from interface.menu import show_main_menu
         show_main_menu(self)
+
+    def back_to_learning_module_menu(self):
+        self.clear_window()
+        self.create_widgets()
 
     def clear_window(self):
         for widget in self.winfo_children():
